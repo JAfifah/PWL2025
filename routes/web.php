@@ -2,17 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/artikels/{artikel}', function ($artikel) {
-    return 'anda berada pada halaman ke-' .$artikel;
-});
+use App\Http\Controllers\PageController;
 
-Route::get('/user/{name?}', function ($name=null) {
-    return 'Nama saya ' .$name;
-});
+// Route untuk beranda
+Route::get('/', [PageController::class, 'index']);
 
-Route::get('/user/{name?}', function ($name='Afifah') {
-    return 'Nama saya ' .$name;
-});
+// Route untuk halaman /about
+Route::get('/about', [PageController::class, 'about']);
 
-use App\Http\Controllers\WelcomeController;
-Route::get('/hello', [WelcomeController::class,'hello']);
+// Route untuk halaman artikel dinamis
+Route::get('/articles/{id}', [PageController::class, 'articles']);
+
+// Route untuk post dan comment
+Route::get('/posts/{post}/comments/{comment}', [PageController::class, 'postComments']);
