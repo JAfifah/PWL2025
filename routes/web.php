@@ -13,3 +13,6 @@ Route::get('/user/{name?}', function ($name=null) {
 Route::get('/user/{name?}', function ($name='Afifah') {
     return 'Nama saya ' .$name;
 });
+
+use App\Http\Controllers\WelcomeController;
+Route::get('/hello', [WelcomeController::class,'hello']);
